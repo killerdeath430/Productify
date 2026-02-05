@@ -3,7 +3,10 @@ import express from 'express'
 import { ENV } from "./config/env"
 import { clerkMiddleware } from '@clerk/express'
 import cors from "cors";
-
+import { comments } from './db/schema';
+import  userRoutes  from './routes/userRoutes';
+import  productRoutes  from './routes/productRoutes';
+import commentRoutes  from './routes/commentRoutes';    
 const app= express()
 
 app.use(cors({ origin: ENV.FRONTEND_URL }));
@@ -23,6 +26,10 @@ app.get("/api/health",(req,res)=>{
 }) 
     
 })
+
+app.use("/api/users",userRoutes)
+app.use("/api/products",productRoutes)
+app.use("/api/comments",commentRoutes)   
 app.listen(ENV.PORT,()=>{
     console.log("The server is running on the port :",ENV.PORT)
 })
