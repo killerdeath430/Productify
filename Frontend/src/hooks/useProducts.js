@@ -23,4 +23,13 @@ export const useCreateproduct = ()=>{
   return useMutation({mutationFn:createProduct});
 
 }
-
+export const useDeleteProduct = ()=>{
+  return useMutation({mutationFn:deleteProduct});
+}
+export const useProduct = ()=>{
+  const result = useQuery({
+    queryKey:["product",id],
+    queryFn:()=>getProductById(id),
+    enabled:!!id
+  })
+}
