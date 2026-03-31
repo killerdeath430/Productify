@@ -4,5 +4,26 @@
     "@tanstack/react-query": "^5.90.20",
     "axios": "^1.13.4",
     "lucide-react": "^0.563.0"
-  }
+  },
+  "name": "productify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend &&  npm run build --prefix backend",
+    "start": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/killerdeath430/Productify.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/killerdeath430/Productify/issues"
+  },
+  "homepage": "https://github.com/killerdeath430/Productify#readme"
 }
