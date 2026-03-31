@@ -14,15 +14,16 @@ export const getAllProducts = async (req: Request, res: Response) => {
   }
 };
 
-export const getProductById = async (req :  Request<{ id: string }>, res:Response)=> {
-  try{
-    const {id}=req.params;
+export const getProductById = async (req: Request<{ id: string }>, res: Response) => {
+  try {
+    const { id } = req.params;
     const product = await queries.getProductById(id);
-    if (!product){
-      res.status(404).json({error:"product not found"})
+    if (!product) {
+      res.status(404).json({ error: "product not found" });
+      return;
     }
-  }
-  catch (error) {
+    res.status(200).json(product); // add this line
+  } catch (error) {
     console.error("Error getting products:", error);
     res.status(500).json({ error: "Failed to get products" });
   }
@@ -62,6 +63,8 @@ export const createProduct = async (req:Request,res:Response)=>{
       imageUrl,
       userId,
     })
+    res.status(201).json(createProduct);
+
   }
   catch(error){
     console.log("Error creating product",error);
